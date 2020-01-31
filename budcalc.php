@@ -4,11 +4,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
+<?php
+$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";      
+$url_components = parse_url($url); 
+parse_str($url_components['query'], $params); 
+?>
 <h2>BudCalc</h2>
 <p>This nifty calculator will help you determine the cost of your weed in dollars/gram THC</p>
 <div>
-<form method="get">
+<form onsubmit="Main()" method="POST">
     <p>
         <label>
             THC Percentage:<br>
@@ -27,7 +31,6 @@
 
 
 <script>
-window.onload = Main;
 function getJsonFromUrl(url) {
   if(!url) url = location.search;
   var query = url.substr(1);
@@ -47,10 +50,10 @@ function Calculate(thc, m, unit, cost)
     }
     return (cost/m_)*(thc/10)
 }
-function Main()
+function Main(object)
 {
     Params = getJsonFromUrl(window.location.href);
-    document.getElementsByTagName("h2")[0].innerText = Calculate(Params.thc, Params[1], Params[2], Params[3]);
+    document.getElementsByTagName("h2")[0].innerText = Calculate(Params.thc, Params.mass, Params.unit, Params.cost);
 }
 </script>
 
