@@ -35,6 +35,12 @@ form {
     padding-bottom: 14px;
     margin: 0px;
 }
+.radio {
+    font-size: small;
+}
+input[type=radio] {
+    height: 12px;
+}
 input[type=submit] {
     margin-top: 9px;
 }

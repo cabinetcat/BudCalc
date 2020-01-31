@@ -18,11 +18,11 @@ $cost = $_POST["cost"];
     <p>
         <label>
             THC Percentage:<br>
-            <input type="number" name="thc" value=""> %<br>
+            <input type="number" step=.01 name="thc" value=""> %<br>
             Weight/Mass:<br>
-            <input type="number" step=.01 name="mass" value=""><br>
-            <input type="radio" name="unit" value="g" checked=true> Grams<br>
-            <input type="radio" name="unit" value="oz"> Ounces<br>
+            <input type="number" step=.001 name="mass" value=""><br>
+            <input type="radio" name="unit" value="g" checked=true><label class="radio"> Grams</label><br>
+            <input type="radio" name="unit" value="oz"><label class="radio"> Ounces</label><br>
             Cost:<br>
             <input type="number" name="cost" value="">
         </label>
