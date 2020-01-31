@@ -13,7 +13,7 @@ $cost = $_POST["cost"];
 <h2>BudCalc</h2>
 <p>This nifty calculator will help you determine the cost of your weed in dollars/gram THC</p>
 <div>
-<form onsubmit="Main()" method="POST">
+<form method="POST">
     <p>
         <label>
             THC Percentage:<br>
@@ -23,25 +23,18 @@ $cost = $_POST["cost"];
             <input type="radio" name="unit" value="g" checked=true> Grams<br>
             <input type="radio" name="unit" value="oz"> Ounces<br>
             Cost:<br>
-            <input type="number" name="date" value="">
+            <input type="number" name="cost" value="">
         </label>
         <br><input type="submit" value="Calculate">
     </p>
+<div id="box">
+    <p id="result"><img src='img.png' style='float: right;'/></p>
+</div>
 </form>
 </div>
 
-
 <script>
-function getJsonFromUrl(url) {
-  if(!url) url = location.search;
-  var query = url.substr(1);
-  var result = {};
-  query.split("&").forEach(function(part) {
-    var item = part.split("=");
-    result[item[0]] = decodeURIComponent(item[1]);
-  });
-  return result;
-}
+window.onload = Main;
 function Calculate(thc, m, unit, cost)
 {
     m_ = m;
@@ -57,7 +50,8 @@ function Main(object)
     m = "<?php echo $m ?>"; 
     unit = "<?php echo $unit ?>";
     cost = "<?php echo $cost ?>";
-    document.getElementsByTagName("h2")[0].innerText = Calculate(thc, m, unit, cost);
+    parent = document.getElementById("result");
+    parent.insertBefore(document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]);
 }
 </script>
 
