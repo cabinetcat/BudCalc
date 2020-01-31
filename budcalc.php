@@ -5,9 +5,10 @@
 </head>
 <body>
 <?php
-$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";      
-$url_components = parse_url($url); 
-parse_str($url_components['query'], $params); 
+$thc = $_POST["thc"];    
+$m = $_POST["mass"];  
+$unit = $_POST["unit"];    
+$cost = $_POST["cost"];
 ?>
 <h2>BudCalc</h2>
 <p>This nifty calculator will help you determine the cost of your weed in dollars/gram THC</p>
@@ -52,8 +53,11 @@ function Calculate(thc, m, unit, cost)
 }
 function Main(object)
 {
-    Params = getJsonFromUrl(window.location.href);
-    document.getElementsByTagName("h2")[0].innerText = Calculate(Params.thc, Params.mass, Params.unit, Params.cost);
+    thc = "<?php echo $thc ?>"; 
+    m = "<?php echo $m ?>"; 
+    unit = "<?php echo $unit ?>";
+    cost = "<?php echo $cost ?>";
+    document.getElementsByTagName("h2")[0].innerText = Calculate(thc, m, unit, cost);
 }
 </script>
 
