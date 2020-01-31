@@ -17,13 +17,13 @@
             <p>
                <label>
                THC Percentage:<br>
-               <input type="number" step=.01 name="thc" value=""> %<br>
+               <input type="number" step=.01 name="thc" value="<?php echo $thc ?>"> %<br>
                Weight/Mass:<br>
-               <input type="number" step=.001 name="mass" value=""><br>
+               <input type="number" step=.001 name="mass" value="<?php echo $m ?>"><br>
                <input type="radio" name="unit" value="g" checked=true><label class="radio"> Grams</label><br>
                <input type="radio" name="unit" value="oz"><label class="radio"> Ounces</label><br>
                Cost:<br>
-               <input type="number" name="cost" value="">
+               <input type="number" name="cost" value="<?php echo $cost ?>">
                </label>
                <br><input type="submit" value="Calculate">
             </p>
@@ -43,12 +43,17 @@
              }
              return cost/((thc/100)*m_);
          }
-         function Main(object)
+         function Main()
          {
+             
              thc = "<?php echo $thc ?>"; 
              m = "<?php echo $m ?>"; 
              unit = "<?php echo $unit ?>";
              cost = "<?php echo $cost ?>";
+             if(unit == "oz")
+             {
+                 document.getElementsByName("unit")[1].checked = true;
+             }
              parent = document.getElementById("result");
              parent.insertBefore(document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]);
          }
