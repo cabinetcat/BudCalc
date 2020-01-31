@@ -10,7 +10,8 @@ $m = $_POST["mass"];
 $unit = $_POST["unit"];    
 $cost = $_POST["cost"];
 ?>
-<h2>BudCalc</h2>
+
+<h2>BudCalc <img src='leaf.png' style='float: right;'/></h2>
 <p>This nifty calculator will help you determine the cost of your weed in dollars/gram THC</p>
 <div>
 <form method="POST">
@@ -19,7 +20,7 @@ $cost = $_POST["cost"];
             THC Percentage:<br>
             <input type="number" name="thc" value=""> %<br>
             Weight/Mass:<br>
-            <input type="number" name="mass" value=""><br>
+            <input type="number" step=.01 name="mass" value=""><br>
             <input type="radio" name="unit" value="g" checked=true> Grams<br>
             <input type="radio" name="unit" value="oz"> Ounces<br>
             Cost:<br>
@@ -42,7 +43,7 @@ function Calculate(thc, m, unit, cost)
     {
         m_ *= 28.34952;     
     }
-    return (cost/m_)*(thc/10)
+    return cost/((thc/100)*m_);
 }
 function Main(object)
 {

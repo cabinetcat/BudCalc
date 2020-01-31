@@ -13,6 +13,10 @@ body {
     height: 50px;
     width: fit-content;
 }
+h2 {
+    width: fit-content;
+    text-align: center;
+}
 #result {
     vertical-align: middle;
 }
@@ -24,7 +28,7 @@ img {
 form {
     border: 2px solid darkgreen;
     width: fit-content;
-    line-height: initial;
+    line-height: 140%;
     border-radius: 5px;
     padding: 10px;
     padding-top: 0%;
