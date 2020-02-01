@@ -20,8 +20,8 @@
                <input type="number" step=.01 name="thc" value="<?php echo $thc ?>"> %<br>
                Weight/Mass:<br>
                <input type="number" step=.001 name="mass" value="<?php echo $m ?>"><br>
-               <input type="radio" name="unit" value="g" checked=<?php if ($unit == "oz") { echo "true"; } else { echo "false"; } ?>><label class="radio"> Grams</label><br>
-               <input type="radio" name="unit" value="oz" checked=<?php if ($unit == "oz") { echo "true"; } else { echo "false"; } ?>><label class="radio"> Ounces</label><br>
+               <input type="radio" name="unit" value="g" <?php if ($unit == "g") { echo "checked"; } ?>><label class="radio"> Grams</label><br>
+               <input type="radio" name="unit" value="oz" <?php if ($unit == "oz") { echo "checked"; } ?>><label class="radio"> Ounces</label><br>
                Cost:<br>
                <input type="number" name="cost" value="<?php echo $cost ?>">
                </label>
