@@ -20,8 +20,8 @@
                <input type="number" step=.01 name="thc" value="<?php echo $thc ?>"> %<br>
                Weight/Mass:<br>
                <input type="number" step=.001 name="mass" value="<?php echo $m ?>"><br>
-               <input type="radio" name="unit" value="g" checked=true><label class="radio"> Grams</label><br>
-               <input type="radio" name="unit" value="oz"><label class="radio"> Ounces</label><br>
+               <input type="radio" name="unit" value="g" checked=<?php if ($unit == "g") ? echo "true" : echo "false";?>><label class="radio"> Grams</label><br>
+               <input type="radio" name="unit" value="oz" checked=<?php if ($unit == "oz") ? echo "true" : echo "false";?>><label class="radio"> Ounces</label><br>
                Cost:<br>
                <input type="number" name="cost" value="<?php echo $cost ?>">
                </label>
@@ -50,10 +50,6 @@
              m = "<?php echo $m ?>"; 
              unit = "<?php echo $unit ?>";
              cost = "<?php echo $cost ?>";
-             if(unit == "oz")
-             {
-                 document.getElementsByName("unit")[1].checked = true;
-             }
              parent = document.getElementById("result");
              parent.insertBefore(document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]);
          }
