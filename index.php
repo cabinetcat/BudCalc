@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="css/index.css">
    </head>
    <body>
       <?php
@@ -10,27 +10,33 @@
          $unit = $_POST["unit"];    
          $cost = $_POST["cost"];
          ?>
-      <h2>BudCalc <img src='leaf.png' style='float: right;'/></h2>
-      <p>This nifty calculator will help you determine the cost of your weed in dollars/gram THC</p>
-      <div>
-         <form method="POST">
-            <p>
-               <label>
-               THC Percentage:<br>
-               <input type="number" step=.01 name="thc" value="<?php echo $thc ?>"> %<br>
-               Weight/Mass:<br>
-               <input type="number" step=.001 name="mass" value="<?php echo $m ?>"><br>
-               <input type="radio" name="unit" value="g" <?php if ($unit == "g") { echo "checked"; } ?>><label class="radio"> Grams</label><br>
-               <input type="radio" name="unit" value="oz" <?php if ($unit == "oz") { echo "checked"; } ?>><label class="radio"> Ounces</label><br>
-               Cost:<br>
-               <input type="number" name="cost" value="<?php echo $cost ?>">
-               </label>
-               <br><input type="submit" value="Calculate">
-            </p>
-            <div id="box">
-               <p id="result"><img src='img.png' style='float: right;'/></p>
+      <div id="page">
+         <div id="title">
+         <h2>BudCalc</h2>
+         <img src='res/leaf.png'/>
+         </div> 
+         <div id="content">
+            <form id="form" method="POST">
+
+                  <label>THC Percentage:</label>
+                  <input type="number" step=.01 name="thc" value="<?php echo $thc ?>">%<br>
+                  <label>Weight/Mass:</label>
+                  <input type="number" step=.001 name="mass" value="<?php echo $m ?>">
+                  <select id="unit" form="form">
+                     <option value="g" <?php if ($unit == "g") { echo "selected"; } ?></option>Grams</option>
+                     <option value="oz" <?php if ($unit == "oz") { echo "selected"; } ?></option>Ounces</option>
+                   </select><br>
+                   <label>Cost:</label><br>
+                  <input type="number" name="cost" value="<?php echo $cost ?>">
+                  <br><input type="submit" value="Calculate">
+               
+            </form>
+            <div id="result">
+               <p id="resulttitle">result</p>
+               <hr class="hr-text" data-content="AND">
+               <h3 id=resulttext>...</h3>
             </div>
-         </form>
+         </div> 
       </div>
       <script>
          window.onload = Main;
@@ -50,16 +56,9 @@
              m = "<?php echo $m ?>"; 
              unit = "<?php echo $unit ?>";
              cost = "<?php echo $cost ?>";
-             parent = document.getElementById("result");
-             parent.insertBefore(document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]);
+             parent = document.getElementById("resulttext");
+             document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]
          }
       </script>
    </body>
 </html>
-
-<?php
-$v = 1;
-
-$r = (1 == $v) ? 'Yes' : 'No'; // $r is set to 'Yes'
-$r = (3 == $v) ? 'Yes' : 'No';
-?>
