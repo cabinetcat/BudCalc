@@ -16,15 +16,15 @@
          <img src='res/leaf.png'/>
          </div> 
          <div id="content">
-            <form id="form" method="POST">
+            <form id="form" method="GET">
 
                   <label>THC Percentage:</label>
                   <input type="number" step=.01 name="thc" value="<?php echo $thc ?>">%<br>
                   <label>Weight/Mass:</label>
                   <input type="number" step=.001 name="mass" value="<?php echo $m ?>">
                   <select id="unit" form="form">
-                     <option value="g" <?php if ($unit == "g") { echo "selected"; } ?></option>Grams</option>
-                     <option value="oz" <?php if ($unit == "oz") { echo "selected"; } ?></option>Ounces</option>
+                     <option value="g" <?php if ($unit == "g") { echo "selected"; } ?>>Grams</option>
+                     <option value="oz" <?php if ($unit == "oz") { echo "selected"; } ?>>Ounces</option>
                    </select><br>
                    <label>Cost:</label><br>
                   <input type="number" name="cost" value="<?php echo $cost ?>">
