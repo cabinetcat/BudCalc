@@ -5,10 +5,10 @@
    </head>
    <body>
       <?php
-         $thc = $_POST["thc"];    
-         $m = $_POST["mass"];  
-         $unit = $_POST["unit"];    
-         $cost = $_POST["cost"];
+         $thc = $_GET["thc"];    
+         $m = $_GET["mass"];  
+         $unit = $_GET["unit"];    
+         $cost = $_GET["cost"];
          ?>
       <div id="page">
          <div id="title">
@@ -16,13 +16,13 @@
          <img src='res/leaf.png'/>
          </div> 
          <div id="content">
-            <form id="form" method="GET">
+            <form id="mainform" method="GET">
 
                   <label>THC Percentage:</label>
                   <input type="number" step=.01 name="thc" value="<?php echo $thc ?>">%<br>
                   <label>Weight/Mass:</label>
                   <input type="number" step=.001 name="mass" value="<?php echo $m ?>">
-                  <select id="unit" form="form">
+                  <select id="unit" name="unit">
                      <option value="g" <?php if ($unit == "g") { echo "selected"; } ?>>Grams</option>
                      <option value="oz" <?php if ($unit == "oz") { echo "selected"; } ?>>Ounces</option>
                    </select><br>
@@ -34,7 +34,7 @@
             <div id="result">
                <p id="resulttitle">result</p>
                <hr class="hr-text" data-content="AND">
-               <h3 id=resulttext>...</h3>
+               <h3 id="resulttext">...</h3>
             </div>
          </div> 
       </div>
@@ -57,7 +57,7 @@
              unit = "<?php echo $unit ?>";
              cost = "<?php echo $cost ?>";
              parent = document.getElementById("resulttext");
-             document.createTextNode(Math.round(Calculate(thc, m, unit, cost)*100)/100),parent.childNodes[0]
+             parent.innerText = Math.round(Calculate(thc, m, unit, cost)*100)/100;
          }
       </script>
    </body>
