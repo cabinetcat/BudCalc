@@ -14,6 +14,7 @@
          <div id="title">
          <h2>BudCalc</h2>
          <img src='res/leaf.png'/>
+         <p id="subtitle">This handy calculator will help you determine the cost of your weed in dollars/gram of THC</p>
          </div> 
          <div id="content">
             <form id="mainform" method="GET">
@@ -27,7 +28,7 @@
                      <option value="oz" <?php if ($unit == "oz") { echo "selected"; } ?>>Ounces</option>
                    </select><br>
                    <label>Cost:</label><br>
-                  <input type="number" name="cost" value="<?php echo $cost ?>">
+                  <input type="number" step=.01 name="cost" value="<?php echo $cost ?>">
                   <br><input type="submit" value="Calculate">
                
             </form>

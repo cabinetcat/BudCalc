@@ -63,6 +63,12 @@ input
 
     margin-bottom: 5px;
 }
+#subtitle
+{
+    font-variant: normal;
+    font-size: smaller;
+    font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+}
 select
 {
     margin-top: 0px;
